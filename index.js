@@ -6,6 +6,8 @@ const testWorker = document.getElementById('worker');
 
 const totalTip = document.getElementById('total-tip')
 
+//sections
+const sushiTotal = document.getElementById('sushi-total');
 //workers
 const kitchenOne = document.getElementById('kitchen-1');
 const kitchenTwo = document.getElementById('kitchen-2');
@@ -30,6 +32,17 @@ submitBtn.addEventListener('click', function(e) {
     // find kitchen tip
     let kitchenTip = (result * .10) / 2;
     console.log(kitchenTip)
+    kitchenOne.innerHTML = kitchenTip;
+    kitchenTwo.innerHTML = kitchenTip
+
+    // calculate foh tip
+    let sushiBar = result - (result * .10 / 2);
+    console.log(sushiBar)
+    sushiTotal.innerHTML = sushiBar;
+
+
+    let fohTotal = result - (result * .10 / 2)
+    console.log(fohTotal)
 
 })
 
