@@ -87,20 +87,42 @@ submitBtn.addEventListener('click', function(e) {
     // calculate foh tip
     // for sushi bar need to create a variable if server is alone
     // if alone === true sushi bar gets .6 instead of half
+    let sushiBarAlone = (result - kitchenTip) * .60;
     let sushiBar = (result - kitchenTip) / 2;
     console.log(sushiBar)
+   
     sushiTotal.innerHTML = `Sushi Bar Total: ${sushiBar}`;
-    if(parseInt(sushiChef.value) === 3) {
+    // if(parseInt(sushiChef.value) === 3) {
+    //     sushiOne.innerHTML = sushiBar / 3
+    //     sushiTwo.innerHTML = sushiBar / 3
+    //     sushiThree.innerHTML = sushiBar / 3
+    //     sushiThree.style.display = 'block';
+    // }
+    // else if(parseInt(sushiChef.value) === 2) {
+    //     sushiOne.innerHTML = sushiBar / 2;
+    //     sushiTwo.innerHTML = sushiBar / 2;
+    //     sushiThree.style.display = 'none';
+    // }
+
+    if(parseInt(sushiChef.value) === 3 && parseInt(serverAmt.value) === 1) {
+        sushiOne.innerHTML = sushiBarAlone / 3
+        sushiTwo.innerHTML = sushiBarAlone / 3
+        sushiThree.innerHTML = sushiBarAlone / 3
+    }
+    else if(parseInt(sushiChef.value) === 2 && parseInt(serverAmt.value) === 1) {
+        sushiOne.innerHTML = sushiBarAlone / 2
+        sushiTwo.innerHTML = sushiBarAlone / 2
+        sushiThree.style.display = 'none';
+    }
+    else if(parseInt(sushiChef.value) === 3 && parseInt(serverAmt.value) > 1) {
         sushiOne.innerHTML = sushiBar / 3
         sushiTwo.innerHTML = sushiBar / 3
         sushiThree.innerHTML = sushiBar / 3
         sushiThree.style.display = 'block';
     }
-    else if(parseInt(sushiChef.value) === 2) {
-        sushiOne.innerHTML = sushiBar / 2;
-        sushiTwo.innerHTML = sushiBar / 2;
-        sushiThree.style.display = 'none';
-    }
+    
+
+
 
 
         // foh hourly logic is
@@ -116,6 +138,7 @@ submitBtn.addEventListener('click', function(e) {
     let fohTotal = (result - kitchenTip) / 2;
     let serverTipHourly = fohTotal / serverHours;
     let serverTipHourlyTwo = fohTotal / serverHoursTwo;
+    let serverAlone = (result - kitchenTip) * .40
     console.log(serverTipHourly)
     console.log(fohTotal)
     serverTotal.innerHTML = `Server Total: ${fohTotal}`;
@@ -130,12 +153,12 @@ submitBtn.addEventListener('click', function(e) {
         serverThree.style.display = 'block';
     }
     else if(parseInt(serverAmt.value) === 2) {
-        serverOne.innerHTML = fohTotal / 2;
-        serverTwo.innerHTML = fohTotal /2;
+        serverOne.innerHTML = (serverTipHourlyTwo * parseInt(serverOneHour.value)).toFixed(2);
+        serverTwo.innerHTML = (serverTipHourlyTwo * parseInt(serverTwoHour.value)).toFixed(2);
         serverThree.style.display = 'none';
     }
-    else {
-        serverOne.innerHTML = fohTotal;
+    else if(parseInt(serverAmt.value) === 1){
+        serverOne.innerHTML = serverAlone;
         serverTwo.style.display = 'none';
         serverThree.style.display = 'none';
     }
