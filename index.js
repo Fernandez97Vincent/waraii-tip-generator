@@ -19,6 +19,7 @@ const sushiThree = document.getElementById('sushi-3');
 const serverOne = document.getElementById('server-1');
 const serverTwo = document.getElementById('server-2');
 const serverThree = document.getElementById('server-3');
+const dishwasherTips = document.getElementById('dishwasher-tip');
 
 // how many worker elements
 const kitchenWorkers = document.getElementById('kitchen-amt');
@@ -38,6 +39,9 @@ const serverAmt = document.getElementById('server-amt');
 // should ask how many workers are working
 // and the amount of hours they worked (SERVERS)
 
+// if there is a dishwasher it would be kitchentip * .3
+// create two variables // with dishwasher and without?
+
 submitBtn.addEventListener('click', function(e) {
     e.preventDefault();
     // parse ints
@@ -45,15 +49,32 @@ submitBtn.addEventListener('click', function(e) {
     console.log(result)
     totalTip.innerHTML = `Total: ${result}`;
     let kitchenTip = (result * .10);
+    let dishwasherTotal = kitchenTip * .30;
     // find kitchen tip
-    if (parseInt(kitchenWorkers.value) === 1) {
-        
-        kitchenOne.innerHTML = kitchenTip
-        kitchenTwo.style.display= 'none';
+    if(dishwasher.checked) {
+        dishwasherTips.innerHTML = dishwasherTotal;
     }
+
+    if (parseInt(kitchenWorkers.value) === 1 && dishwasher.checked) {
+        
+        kitchenOne.innerHTML = kitchenTip - dishwasherTotal;
+        kitchenTwo.style.display= 'none';
+        dishwasherTips.style.display = 'block';
+    }
+    else if(parseInt(kitchenWorkers.value) === 2 && dishwasher.checked)  {
+        kitchenOne.innerHTML = (kitchenTip - dishwasherTotal) / 2;
+        kitchenTwo.innerHTML = (kitchenTip - dishwasherTotal) / 2;
+        dishwasherTips.style.display = 'block';
+    }
+
+    else if(parseInt(kitchenWorkers.value) === 2) {
+        kitchenOne.innerHTML = (kitchenTip / 2)
+        kitchenTwo.innerHTML = (kitchenTip / 2)
+        dishwasherTips.style.display = 'none';
+    }
+    
     else {
-        kitchenOne.innerHTML = kitchenTip / 2;
-        kitchenTwo.innerHTML = kitchenTip / 2
+        kitchenOne.innerHTML = kitchenTip;
     }
     
     // console.log(kitchenTip)
