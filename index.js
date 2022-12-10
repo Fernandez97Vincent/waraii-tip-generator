@@ -70,11 +70,14 @@ submitBtn.addEventListener('click', function(e) {
     else if(parseInt(kitchenWorkers.value) === 2) {
         kitchenOne.innerHTML = (kitchenTip / 2)
         kitchenTwo.innerHTML = (kitchenTip / 2)
+        kitchenTwo.style.display = 'block';
         dishwasherTips.style.display = 'none';
     }
     
     else {
         kitchenOne.innerHTML = kitchenTip;
+        kitchenTwo.style.display = 'none';
+        dishwasherTips.style.display = 'none';
     }
     
     // console.log(kitchenTip)
@@ -82,6 +85,8 @@ submitBtn.addEventListener('click', function(e) {
     // kitchenTwo.innerHTML = kitchenTip / 2;
 
     // calculate foh tip
+    // for sushi bar need to create a variable if server is alone
+    // if alone === true sushi bar gets .6 instead of half
     let sushiBar = (result - kitchenTip) / 2;
     console.log(sushiBar)
     sushiTotal.innerHTML = `Sushi Bar Total: ${sushiBar}`;
@@ -98,13 +103,29 @@ submitBtn.addEventListener('click', function(e) {
     }
 
 
+        // foh hourly logic is
+        // add the total amount of hours and divide it by the total
+        // so we get the value of the input(s)
+    const serverOneHour = document.getElementById('server-1-hour');
+    const serverTwoHour = document.getElementById('server-2-hour');
+    const serverThreeHour = document.getElementById('server-3-hour');
+    let serverHours = parseInt(serverOneHour.value) + parseInt(serverTwoHour.value) + parseInt(serverThreeHour.value)
+    // created another variable if there are only two servers
+    let serverHoursTwo = parseInt(serverOneHour.value) + parseInt(serverTwoHour.value);
+    //once we get the total amount of hours we can add them and divide it by the total amount of tip
     let fohTotal = (result - kitchenTip) / 2;
+    let serverTipHourly = fohTotal / serverHours;
+    let serverTipHourlyTwo = fohTotal / serverHoursTwo;
+    console.log(serverTipHourly)
     console.log(fohTotal)
     serverTotal.innerHTML = `Server Total: ${fohTotal}`;
     if(parseInt(serverAmt.value) === 3) {
-        serverOne.innerHTML = fohTotal / 3;
-        serverTwo.innerHTML = fohTotal / 3;
-        serverThree.innerHTML = fohTotal / 3;
+        // serverOne.innerHTML = fohTotal / 3;
+        // serverTwo.innerHTML = fohTotal / 3;
+        // serverThree.innerHTML = fohTotal / 3;
+        serverOne.innerHTML = (serverTipHourly * parseInt(serverOneHour.value)).toFixed(2);
+        serverTwo.innerHTML = (serverTipHourly * parseInt(serverTwoHour.value)).toFixed(2);
+        serverThree.innerHTML = (serverTipHourly * parseInt(serverThreeHour.value)).toFixed(2);
         serverTwo.style.display = 'block';
         serverThree.style.display = 'block';
     }

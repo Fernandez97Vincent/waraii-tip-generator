@@ -22,8 +22,9 @@
             <div class="worker-container">
                 <h3 id="total-tip">Total:</h3>
                 <!-- <p id="worker">Hello</p> -->
-                <p>Is there a dishwasher?</p>
+               <label for="checkbox">Is there a dishwasher</label>
                 <input type="checkbox" id="dishwasher">
+                <br>
                 <input type="number" id="kitchen-amt" placeholder="How many kitchen worker"/>
                 <p id="dishwasher-tip">Dishwasher</p>
                 <p id="kitchen-1">Kitchen 1: </p>
@@ -36,11 +37,17 @@
                 <p id="sushi-3">Sushi 3: </p>
 
                 <h3 id="foh-total">Front of House Total: </h3> 
+                <div class="server-container">
                 <input type="number" id="server-amt" placeholder="How many servers"/>
-                <p id="server-1">Server 1: </p>
-                <p id="server-2">Server 2: </p>
-                <p id="server-3">Server 3: </p>
-
+                <input type="number" id="server-1-hour">
+                <label for="server-1-hour" id="server-1">Server 1: </label>
+                <input type="number" id="server-2-hour">
+                <label for="server-2-hour" id="server-2">Server 2: </label>
+                <input type="number" id="server-3-hour">
+                <label for="server-3-hour" id="server-3">Server 3: </label>
+                <br>
+                </div>
+                
                 <button id="submit-btn">Submit</button>
             </div>
         </form>
