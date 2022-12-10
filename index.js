@@ -11,6 +11,12 @@ const sushiTotal = document.getElementById('sushi-total');
 //workers
 const kitchenOne = document.getElementById('kitchen-1');
 const kitchenTwo = document.getElementById('kitchen-2');
+const dishwasher = document.getElementById('dishwasher');
+
+// how many worker elements
+const kitchenWorkers = document.getElementById('kitchen-amt');
+const sushiChef = document.getElementById('sushi-amt');
+const serverAmt = document.getElementById('server-amt');
 
 // what we want to do is calculate total tip by adding all the tip
 // function getTotalTip() {
@@ -22,26 +28,38 @@ const kitchenTwo = document.getElementById('kitchen-2');
 //     testWorker.innerText = getTotalTip();
 // }
 
+// should ask how many workers are working
+// and the amount of hours they worked (SERVERS)
+
 submitBtn.addEventListener('click', function(e) {
     e.preventDefault();
     // parse ints
     let result = parseInt(cardTip.value) + parseInt(cashTip.value) + parseInt(spotHopperTip.value)
     console.log(result)
     totalTip.innerHTML = `Total: ${result}`;
-
+    let kitchenTip = (result * .10);
     // find kitchen tip
-    let kitchenTip = (result * .10) / 2;
-    console.log(kitchenTip)
-    kitchenOne.innerHTML = kitchenTip;
-    kitchenTwo.innerHTML = kitchenTip
+    if (parseInt(kitchenWorkers.value) === 1) {
+        
+        kitchenOne.innerHTML = kitchenTip
+        kitchenTwo.classList.add('hide');
+    }
+    else {
+        kitchenOne.innerHTML = kitchenTip / 2;
+        kitchenTwo.innerHTML = kitchenTip / 2
+    }
+    
+    // console.log(kitchenTip)
+    // kitchenOne.innerHTML = kitchenTip / 2;
+    // kitchenTwo.innerHTML = kitchenTip / 2;
 
     // calculate foh tip
-    let sushiBar = result - (result * .10 / 2);
+    let sushiBar = (result - kitchenTip) / 2;
     console.log(sushiBar)
     sushiTotal.innerHTML = sushiBar;
 
 
-    let fohTotal = result - (result * .10 / 2)
+    let fohTotal = (result - kitchenTip) / 2;
     console.log(fohTotal)
 
 })

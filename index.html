@@ -15,18 +15,28 @@
             <input type="number" id="card-tip" placeholder="Card Tips">
             <input type="number" id="cash-tips" placeholder="Cash Tips">
             <input type="text" id="sh-tip" placeholder="Spothopper Tips">
-            <button id="submit-btn">Submit</button>
-            <input type="checkbox" id="dishwasher">
-        </form>
+            
+            
+        
 
             <div class="worker-container">
-                <p id="total-tip">Total:</p>
+                <h3 id="total-tip">Total:</h3>
                 <!-- <p id="worker">Hello</p> -->
-                <p id="dishwasher">Dishwasher: </p>
+                <p>Is there a dishwasher?</p>
+                <input type="checkbox" id="dishwasher">
+                <input type="number" id="kitchen-amt" placeholder="How many kitchen worker"/>
+                
                 <p id="kitchen-1">Kitchen 1: </p>
                 <p id="kitchen-2">Kitchen 2: </p>
-                <p id="sushi-total">Sushi Bar Total: </p>
+
+                <h3 id="sushi-total">Sushi Bar Total: </h3> 
+                <input type="number" id="sushi-amt" placeholder="How many Sushi Bar"/>
+
+                <h3 id="foh-total">Front of House Total: </h3> 
+                <input type="number" id="server-amt" placeholder="How many servers"/>
+                <button id="submit-btn">Submit</button>
             </div>
+        </form>
     </div>
 </body>
 <script rel="script" src="index.js"></script>
