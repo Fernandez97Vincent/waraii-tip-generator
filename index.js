@@ -41,8 +41,17 @@ const serverAmt = document.getElementById('server-amt');
 
 // if there is a dishwasher it would be kitchentip * .3
 // create two variables // with dishwasher and without?
+kitchenOne.style.display = 'none';
+kitchenTwo.style.display = 'none';
+dishwasherTips.style.display = 'none';
+sushiOne.style.display = 'none';
+sushiTwo.style.display = 'none';
+sushiThree.style.display = 'none';
+serverOne.style.display = 'none';
+serverTwo.style.display = 'none';
+serverThree.style.display = 'none';
 
-submitBtn.addEventListener('click', function(e) {
+submitBtn.addEventListener('click', function (e) {
     e.preventDefault();
     // parse ints
     let result = parseInt(cardTip.value) + parseInt(cashTip.value) + parseInt(spotHopperTip.value)
@@ -50,36 +59,46 @@ submitBtn.addEventListener('click', function(e) {
     totalTip.innerHTML = `Total: ${result}`;
     let kitchenTip = (result * .10);
     let dishwasherTotal = kitchenTip * .30;
+
+    kitchenOne.style.display = 'block';
+    kitchenTwo.style.display = 'block';
+    dishwasherTips.style.display = 'block';
+    sushiOne.style.display = 'block';
+    sushiTwo.style.display = 'block';
+    sushiThree.style.display = 'block';
+    serverOne.style.display = 'block';
+    serverTwo.style.display = 'block';
+    serverThree.style.display = 'block';
     // find kitchen tip
-    if(dishwasher.checked) {
+    if (dishwasher.checked) {
         dishwasherTips.innerHTML = dishwasherTotal;
     }
 
     if (parseInt(kitchenWorkers.value) === 1 && dishwasher.checked) {
-        
+
         kitchenOne.innerHTML = kitchenTip - dishwasherTotal;
-        kitchenTwo.style.display= 'none';
+        kitchenTwo.style.display = 'none';
         dishwasherTips.style.display = 'block';
     }
-    else if(parseInt(kitchenWorkers.value) === 2 && dishwasher.checked)  {
+    else if (parseInt(kitchenWorkers.value) === 2 && dishwasher.checked) {
         kitchenOne.innerHTML = (kitchenTip - dishwasherTotal) / 2;
         kitchenTwo.innerHTML = (kitchenTip - dishwasherTotal) / 2;
         dishwasherTips.style.display = 'block';
     }
 
-    else if(parseInt(kitchenWorkers.value) === 2) {
+    else if (parseInt(kitchenWorkers.value) === 2) {
         kitchenOne.innerHTML = (kitchenTip / 2)
         kitchenTwo.innerHTML = (kitchenTip / 2)
         kitchenTwo.style.display = 'block';
         dishwasherTips.style.display = 'none';
     }
-    
+
     else {
         kitchenOne.innerHTML = kitchenTip;
         kitchenTwo.style.display = 'none';
         dishwasherTips.style.display = 'none';
     }
-    
+
     // console.log(kitchenTip)
     // kitchenOne.innerHTML = kitchenTip / 2;
     // kitchenTwo.innerHTML = kitchenTip / 2;
@@ -90,7 +109,7 @@ submitBtn.addEventListener('click', function(e) {
     let sushiBarAlone = (result - kitchenTip) * .60;
     let sushiBar = (result - kitchenTip) / 2;
     console.log(sushiBar)
-   
+
     sushiTotal.innerHTML = `Sushi Bar Total: ${sushiBar}`;
     // if(parseInt(sushiChef.value) === 3) {
     //     sushiOne.innerHTML = sushiBar / 3
@@ -104,30 +123,30 @@ submitBtn.addEventListener('click', function(e) {
     //     sushiThree.style.display = 'none';
     // }
 
-    if(parseInt(sushiChef.value) === 3 && parseInt(serverAmt.value) === 1) {
+    if (parseInt(sushiChef.value) === 3 && parseInt(serverAmt.value) === 1) {
         sushiOne.innerHTML = sushiBarAlone / 3
         sushiTwo.innerHTML = sushiBarAlone / 3
         sushiThree.innerHTML = sushiBarAlone / 3
     }
-    else if(parseInt(sushiChef.value) === 2 && parseInt(serverAmt.value) === 1) {
+    else if (parseInt(sushiChef.value) === 2 && parseInt(serverAmt.value) === 1) {
         sushiOne.innerHTML = sushiBarAlone / 2
         sushiTwo.innerHTML = sushiBarAlone / 2
         sushiThree.style.display = 'none';
     }
-    else if(parseInt(sushiChef.value) === 3 && parseInt(serverAmt.value) > 1) {
+    else if (parseInt(sushiChef.value) === 3 && parseInt(serverAmt.value) > 1) {
         sushiOne.innerHTML = sushiBar / 3
         sushiTwo.innerHTML = sushiBar / 3
         sushiThree.innerHTML = sushiBar / 3
         sushiThree.style.display = 'block';
     }
-    
 
 
 
 
-        // foh hourly logic is
-        // add the total amount of hours and divide it by the total
-        // so we get the value of the input(s)
+
+    // foh hourly logic is
+    // add the total amount of hours and divide it by the total
+    // so we get the value of the input(s)
     const serverOneHour = document.getElementById('server-1-hour');
     const serverTwoHour = document.getElementById('server-2-hour');
     const serverThreeHour = document.getElementById('server-3-hour');
@@ -142,7 +161,7 @@ submitBtn.addEventListener('click', function(e) {
     console.log(serverTipHourly)
     console.log(fohTotal)
     serverTotal.innerHTML = `Server Total: ${fohTotal}`;
-    if(parseInt(serverAmt.value) === 3) {
+    if (parseInt(serverAmt.value) === 3) {
         // serverOne.innerHTML = fohTotal / 3;
         // serverTwo.innerHTML = fohTotal / 3;
         // serverThree.innerHTML = fohTotal / 3;
@@ -152,12 +171,12 @@ submitBtn.addEventListener('click', function(e) {
         serverTwo.style.display = 'block';
         serverThree.style.display = 'block';
     }
-    else if(parseInt(serverAmt.value) === 2) {
+    else if (parseInt(serverAmt.value) === 2) {
         serverOne.innerHTML = (serverTipHourlyTwo * parseInt(serverOneHour.value)).toFixed(2);
         serverTwo.innerHTML = (serverTipHourlyTwo * parseInt(serverTwoHour.value)).toFixed(2);
         serverThree.style.display = 'none';
     }
-    else if(parseInt(serverAmt.value) === 1){
+    else if (parseInt(serverAmt.value) === 1) {
         serverOne.innerHTML = serverAlone;
         serverTwo.style.display = 'none';
         serverThree.style.display = 'none';
