@@ -26,6 +26,10 @@ const kitchenWorkers = document.getElementById('kitchen-amt');
 const sushiChef = document.getElementById('sushi-amt');
 const serverAmt = document.getElementById('server-amt');
 
+function toFixed(num) {
+    return num.toFixed(2);
+}
+
 // what we want to do is calculate total tip by adding all the tip
 // function getTotalTip() {
 //     let totalTip = cardtip.value + cashTip.value + spotHopperTip.value;
@@ -76,19 +80,19 @@ submitBtn.addEventListener('click', function (e) {
 
     if (parseInt(kitchenWorkers.value) === 1 && dishwasher.checked) {
 
-        kitchenOne.innerHTML = kitchenTip - dishwasherTotal;
+        kitchenOne.innerHTML = toFixed(kitchenTip - dishwasherTotal);
         kitchenTwo.style.display = 'none';
         dishwasherTips.style.display = 'block';
     }
     else if (parseInt(kitchenWorkers.value) === 2 && dishwasher.checked) {
-        kitchenOne.innerHTML = (kitchenTip - dishwasherTotal) / 2;
-        kitchenTwo.innerHTML = (kitchenTip - dishwasherTotal) / 2;
+        kitchenOne.innerHTML = toFixed((kitchenTip - dishwasherTotal) / 2);
+        kitchenTwo.innerHTML = toFixed((kitchenTip - dishwasherTotal) / 2);
         dishwasherTips.style.display = 'block';
     }
 
     else if (parseInt(kitchenWorkers.value) === 2) {
-        kitchenOne.innerHTML = (kitchenTip / 2)
-        kitchenTwo.innerHTML = (kitchenTip / 2)
+        kitchenOne.innerHTML = toFixed(kitchenTip / 2)
+        kitchenTwo.innerHTML = toFixed(kitchenTip / 2)
         kitchenTwo.style.display = 'block';
         dishwasherTips.style.display = 'none';
     }
@@ -124,19 +128,24 @@ submitBtn.addEventListener('click', function (e) {
     // }
 
     if (parseInt(sushiChef.value) === 3 && parseInt(serverAmt.value) === 1) {
-        sushiOne.innerHTML = sushiBarAlone / 3
-        sushiTwo.innerHTML = sushiBarAlone / 3
-        sushiThree.innerHTML = sushiBarAlone / 3
+        sushiOne.innerHTML = toFixed(sushiBarAlone / 3)
+        sushiTwo.innerHTML = toFixed(sushiBarAlone / 3)
+        sushiThree.innerHTML = toFixed(sushiBarAlone / 3)
     }
     else if (parseInt(sushiChef.value) === 2 && parseInt(serverAmt.value) === 1) {
-        sushiOne.innerHTML = sushiBarAlone / 2
-        sushiTwo.innerHTML = sushiBarAlone / 2
+        sushiOne.innerHTML = toFixed(sushiBarAlone / 2)
+        sushiTwo.innerHTML = toFixed(sushiBarAlone / 2)
         sushiThree.style.display = 'none';
     }
     else if (parseInt(sushiChef.value) === 3 && parseInt(serverAmt.value) > 1) {
-        sushiOne.innerHTML = sushiBar / 3
-        sushiTwo.innerHTML = sushiBar / 3
-        sushiThree.innerHTML = sushiBar / 3
+        sushiOne.innerHTML = toFixed(sushiBar / 3)
+        sushiTwo.innerHTML = toFixed(sushiBar / 3)
+        sushiThree.innerHTML = toFixed(sushiBar / 3)
+        sushiThree.style.display = 'block';
+    }
+    else if (parseInt(sushiChef.value) === 2 && parseInt(serverAmt.value) > 1) {
+        sushiOne.innerHTML = toFixed(sushiBar / 3)
+        sushiTwo.innerHTML = toFixed(sushiBar / 3)
         sushiThree.style.display = 'block';
     }
 
@@ -177,7 +186,7 @@ submitBtn.addEventListener('click', function (e) {
         serverThree.style.display = 'none';
     }
     else if (parseInt(serverAmt.value) === 1) {
-        serverOne.innerHTML = serverAlone;
+        serverOne.innerHTML = serverAlone.toFixed(2);
         serverTwo.style.display = 'none';
         serverThree.style.display = 'none';
     }
