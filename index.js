@@ -172,7 +172,7 @@ submitBtn.addEventListener('click', function (e) {
     let fohTotal = (result - kitchenTip) / 2;
     let serverTipHourly = fohTotal / serverHours;
     let serverTipHourlyTwo = fohTotal / serverHoursTwo;
-    let serverAlone = (result - kitchenTip) * .40
+    let serverAlone = (result - kitchenTip) * .40;
     console.log(serverTipHourly)
     console.log(fohTotal)
     if (parseInt(serverAmt.value) === 1) {
@@ -181,7 +181,7 @@ submitBtn.addEventListener('click', function (e) {
     else {
         serverTotal.innerHTML = `Server Total: ${toFixed(fohTotal)}`;
     }
-    serverTotal.innerHTML = `Server Total: ${fohTotal}`;
+
     if (parseInt(serverAmt.value) === 3) {
         // serverOne.innerHTML = fohTotal / 3;
         // serverTwo.innerHTML = fohTotal / 3;
