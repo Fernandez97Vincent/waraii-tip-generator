@@ -115,10 +115,10 @@ submitBtn.addEventListener('click', function (e) {
     console.log(sushiBar)
 
     if(parseInt(serverAmt.value) === 1) {
-        sushiTotal.innerHTML = `Sushi Bar Total: ${sushiBarAlone}`;
+        sushiTotal.innerHTML = `Sushi Bar Total: ${toFixed(sushiBarAlone)}`;
     }
     else {
-        sushiTotal.innerHTML = `Sushi Bar Total: ${sushiBar}`;
+        sushiTotal.innerHTML = `Sushi Bar Total: ${toFixed(sushiBar)}`;
     }
     
     // if(parseInt(sushiChef.value) === 3) {
@@ -175,6 +175,12 @@ submitBtn.addEventListener('click', function (e) {
     let serverAlone = (result - kitchenTip) * .40
     console.log(serverTipHourly)
     console.log(fohTotal)
+    if (parseInt(serverAmt.value) === 1) {
+        serverTotal.innerHTML = `Server Total: ${toFixed(serverAlone)}`;
+    }
+    else {
+        serverTotal.innerHTML = `Server Total: ${toFixed(fohTotal)}`;
+    }
     serverTotal.innerHTML = `Server Total: ${fohTotal}`;
     if (parseInt(serverAmt.value) === 3) {
         // serverOne.innerHTML = fohTotal / 3;
