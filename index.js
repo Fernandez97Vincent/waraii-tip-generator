@@ -75,30 +75,30 @@ submitBtn.addEventListener('click', function (e) {
     serverThree.style.display = 'block';
     // find kitchen tip
     if (dishwasher.checked) {
-        dishwasherTips.innerHTML = dishwasherTotal;
+        dishwasherTips.innerHTML = `Dishwasher ${dishwasherTotal}`;
     }
 
     if (parseInt(kitchenWorkers.value) === 1 && dishwasher.checked) {
 
-        kitchenOne.innerHTML = toFixed(kitchenTip - dishwasherTotal);
+        kitchenOne.innerHTML = `Kitchen 1: ${toFixed(kitchenTip - dishwasherTotal)}`;
         kitchenTwo.style.display = 'none';
         dishwasherTips.style.display = 'block';
     }
     else if (parseInt(kitchenWorkers.value) === 2 && dishwasher.checked) {
-        kitchenOne.innerHTML = toFixed((kitchenTip - dishwasherTotal) / 2);
-        kitchenTwo.innerHTML = toFixed((kitchenTip - dishwasherTotal) / 2);
+        kitchenOne.innerHTML = `Kitchen 1: ${toFixed((kitchenTip - dishwasherTotal) / 2)}`;
+        kitchenTwo.innerHTML = `Kitchen 2: ${toFixed((kitchenTip - dishwasherTotal) / 2)}`;
         dishwasherTips.style.display = 'block';
     }
 
     else if (parseInt(kitchenWorkers.value) === 2) {
-        kitchenOne.innerHTML = toFixed(kitchenTip / 2)
-        kitchenTwo.innerHTML = toFixed(kitchenTip / 2)
+        kitchenOne.innerHTML = `Kitchen 1: ${toFixed(kitchenTip / 2)}`;
+        kitchenTwo.innerHTML = `Kitchen 2: ${toFixed(kitchenTip / 2)}`;
         kitchenTwo.style.display = 'block';
         dishwasherTips.style.display = 'none';
     }
 
     else {
-        kitchenOne.innerHTML = kitchenTip;
+        kitchenOne.innerHTML = `Kitchen: ${kitchenTip}`;
         kitchenTwo.style.display = 'none';
         dishwasherTips.style.display = 'none';
     }
@@ -128,24 +128,24 @@ submitBtn.addEventListener('click', function (e) {
     // }
 
     if (parseInt(sushiChef.value) === 3 && parseInt(serverAmt.value) === 1) {
-        sushiOne.innerHTML = toFixed(sushiBarAlone / 3)
-        sushiTwo.innerHTML = toFixed(sushiBarAlone / 3)
-        sushiThree.innerHTML = toFixed(sushiBarAlone / 3)
+        sushiOne.innerHTML = `Sushi 1: ${toFixed(sushiBarAlone / 3)}`
+        sushiTwo.innerHTML = `Sushi 2: ${toFixed(sushiBarAlone / 3)}`
+        sushiThree.innerHTML = `Sushi 3: ${toFixed(sushiBarAlone / 3)}`
     }
     else if (parseInt(sushiChef.value) === 2 && parseInt(serverAmt.value) === 1) {
-        sushiOne.innerHTML = toFixed(sushiBarAlone / 2)
-        sushiTwo.innerHTML = toFixed(sushiBarAlone / 2)
+        sushiOne.innerHTML = `Sushi 1: ${toFixed(sushiBarAlone / 2)}`
+        sushiTwo.innerHTML = `Sushi 2: ${toFixed(sushiBarAlone / 2)}`
         sushiThree.style.display = 'none';
     }
     else if (parseInt(sushiChef.value) === 3 && parseInt(serverAmt.value) > 1) {
-        sushiOne.innerHTML = toFixed(sushiBar / 3)
-        sushiTwo.innerHTML = toFixed(sushiBar / 3)
-        sushiThree.innerHTML = toFixed(sushiBar / 3)
+        sushiOne.innerHTML = `Sushi 1: ${toFixed(sushiBar / 3)}`
+        sushiTwo.innerHTML = `Sushi 2: ${toFixed(sushiBar / 3)}`
+        sushiThree.innerHTML = `Sushi 3: ${toFixed(sushiBar / 3)}`
         sushiThree.style.display = 'block';
     }
     else if (parseInt(sushiChef.value) === 2 && parseInt(serverAmt.value) > 1) {
-        sushiOne.innerHTML = toFixed(sushiBar / 3)
-        sushiTwo.innerHTML = toFixed(sushiBar / 3)
+        sushiOne.innerHTML = `Sushi 1: ${toFixed(sushiBar / 2)}`
+        sushiTwo.innerHTML = `Sushi 2: ${toFixed(sushiBar / 2)}`
         sushiThree.style.display = 'block';
     }
 
@@ -174,19 +174,19 @@ submitBtn.addEventListener('click', function (e) {
         // serverOne.innerHTML = fohTotal / 3;
         // serverTwo.innerHTML = fohTotal / 3;
         // serverThree.innerHTML = fohTotal / 3;
-        serverOne.innerHTML = (serverTipHourly * parseInt(serverOneHour.value)).toFixed(2);
-        serverTwo.innerHTML = (serverTipHourly * parseInt(serverTwoHour.value)).toFixed(2);
-        serverThree.innerHTML = (serverTipHourly * parseInt(serverThreeHour.value)).toFixed(2);
+        serverOne.innerHTML = `Server 1: ${(serverTipHourly * parseInt(serverOneHour.value)).toFixed(2)}`;
+        serverTwo.innerHTML = `Server 2: ${(serverTipHourly * parseInt(serverTwoHour.value)).toFixed(2)}`;
+        serverThree.innerHTML = `Server 3: ${(serverTipHourly * parseInt(serverThreeHour.value)).toFixed(2)}`;
         serverTwo.style.display = 'block';
         serverThree.style.display = 'block';
     }
     else if (parseInt(serverAmt.value) === 2) {
-        serverOne.innerHTML = (serverTipHourlyTwo * parseInt(serverOneHour.value)).toFixed(2);
-        serverTwo.innerHTML = (serverTipHourlyTwo * parseInt(serverTwoHour.value)).toFixed(2);
+        serverOne.innerHTML = `Server 1: ${(serverTipHourlyTwo * parseInt(serverOneHour.value)).toFixed(2)}`;
+        serverTwo.innerHTML = `Server 2: ${(serverTipHourlyTwo * parseInt(serverTwoHour.value)).toFixed(2)}`;
         serverThree.style.display = 'none';
     }
     else if (parseInt(serverAmt.value) === 1) {
-        serverOne.innerHTML = serverAlone.toFixed(2);
+        serverOne.innerHTML = `Server: ${serverAlone.toFixed(2)}`;
         serverTwo.style.display = 'none';
         serverThree.style.display = 'none';
     }

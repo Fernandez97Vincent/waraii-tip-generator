@@ -3,6 +3,7 @@
     padding: 0;
     box-sizing: content-box;
     color: white;
+    font-family: 'Inconsolata', monospace;
 }
 
 input::-webkit-outer-spin-button,
@@ -42,6 +43,10 @@ h1 {
   padding: 5px;
   color: black;
   border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  margin-top: 10px;
 }
 
 .main-container h3 {
@@ -56,14 +61,14 @@ h1 {
 
 #submit-btn {
   margin: 0 auto;
-  width: 10rem;
+  width: 16rem;
   margin-top: 1rem;
   justify-content: center;
   display: flex;
   align-items: center;
   border: none;
   background-color: hsl(150, 100%, 66%);
-  height: 2rem;
+  height: 3rem;
   border-radius: 12px;
 }
 
@@ -79,12 +84,15 @@ h1 {
     width: 80%;
     font-size: 1.5rem;
   }
+
 }
 
 @media (max-width: 480px) {
     .main-container {
       width: 80%;
       font-size: 1.5rem;
+      border-radius: 20px;
+      font-size: 1rem;
     }
   }
 
