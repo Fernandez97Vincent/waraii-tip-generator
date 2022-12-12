@@ -114,7 +114,13 @@ submitBtn.addEventListener('click', function (e) {
     let sushiBar = (result - kitchenTip) / 2;
     console.log(sushiBar)
 
-    sushiTotal.innerHTML = `Sushi Bar Total: ${sushiBar}`;
+    if(parseInt(serverAmt.value) === 1) {
+        sushiTotal.innerHTML = `Sushi Bar Total: ${sushiBarAlone}`;
+    }
+    else {
+        sushiTotal.innerHTML = `Sushi Bar Total: ${sushiBar}`;
+    }
+    
     // if(parseInt(sushiChef.value) === 3) {
     //     sushiOne.innerHTML = sushiBar / 3
     //     sushiTwo.innerHTML = sushiBar / 3
