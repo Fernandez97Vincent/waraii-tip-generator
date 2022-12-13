@@ -58,9 +58,10 @@ serverThree.style.display = 'none';
 submitBtn.addEventListener('click', function (e) {
     e.preventDefault();
     // parse ints
-    let result = parseInt(cardTip.value) + parseInt(cashTip.value) + parseInt(spotHopperTip.value)
+    let result = parseFloat(cardTip.value) + parseFloat(cashTip.value) + parseFloat(spotHopperTip.value)
+    console.log(cardTip.value)
     console.log(result)
-    totalTip.innerHTML = `Total: ${result}`;
+    totalTip.innerHTML = `Total: ${toFixed(result)}`;
     let kitchenTip = (result * .10);
     let dishwasherTotal = kitchenTip * .30;
 
@@ -165,9 +166,9 @@ submitBtn.addEventListener('click', function (e) {
     const serverOneHour = document.getElementById('server-1-hour');
     const serverTwoHour = document.getElementById('server-2-hour');
     const serverThreeHour = document.getElementById('server-3-hour');
-    let serverHours = parseInt(serverOneHour.value) + parseInt(serverTwoHour.value) + parseInt(serverThreeHour.value)
+    let serverHours = parseFloat(serverOneHour.value) + parseFloat(serverTwoHour.value) + parseFloat(serverThreeHour.value)
     // created another variable if there are only two servers
-    let serverHoursTwo = parseInt(serverOneHour.value) + parseInt(serverTwoHour.value);
+    let serverHoursTwo = parseFloat(serverOneHour.value) + parseFloat(serverTwoHour.value);
     //once we get the total amount of hours we can add them and divide it by the total amount of tip
     let fohTotal = (result - kitchenTip) / 2;
     let serverTipHourly = fohTotal / serverHours;
@@ -186,15 +187,15 @@ submitBtn.addEventListener('click', function (e) {
         // serverOne.innerHTML = fohTotal / 3;
         // serverTwo.innerHTML = fohTotal / 3;
         // serverThree.innerHTML = fohTotal / 3;
-        serverOne.innerHTML = `Server 1: ${(serverTipHourly * parseInt(serverOneHour.value)).toFixed(2)}`;
-        serverTwo.innerHTML = `Server 2: ${(serverTipHourly * parseInt(serverTwoHour.value)).toFixed(2)}`;
-        serverThree.innerHTML = `Server 3: ${(serverTipHourly * parseInt(serverThreeHour.value)).toFixed(2)}`;
+        serverOne.innerHTML = `Server 1: ${(serverTipHourly * parseFloat(serverOneHour.value)).toFixed(2)}`;
+        serverTwo.innerHTML = `Server 2: ${(serverTipHourly * parseFloat(serverTwoHour.value)).toFixed(2)}`;
+        serverThree.innerHTML = `Server 3: ${(serverTipHourly * parseFloat(serverThreeHour.value)).toFixed(2)}`;
         serverTwo.style.display = 'block';
         serverThree.style.display = 'block';
     }
     else if (parseInt(serverAmt.value) === 2) {
-        serverOne.innerHTML = `Server 1: ${(serverTipHourlyTwo * parseInt(serverOneHour.value)).toFixed(2)}`;
-        serverTwo.innerHTML = `Server 2: ${(serverTipHourlyTwo * parseInt(serverTwoHour.value)).toFixed(2)}`;
+        serverOne.innerHTML = `Server 1: ${(serverTipHourlyTwo * parseFloat(serverOneHour.value)).toFixed(2)}`;
+        serverTwo.innerHTML = `Server 2: ${(serverTipHourlyTwo * parseFloat(serverTwoHour.value)).toFixed(2)}`;
         serverThree.style.display = 'none';
     }
     else if (parseInt(serverAmt.value) === 1) {
